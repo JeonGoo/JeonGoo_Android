@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkController : Application() {
-    private val baseUrl = ""
+    private val baseUrl = "https://www.naver.com"
 
     lateinit var networkService : NetworkService
 

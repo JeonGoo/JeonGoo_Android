@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_main_menu">
+
+    <fragment
+        android:id="@+id/navigation_main_menu"
+        android:name="com.example.garam.jeongoo.home.main.MainMenuFragment"
+        android:label="@string/title_main_menu"
+        tools:layout="@layout/fragment_main_menu" />
+
+    <fragment
+        android:id="@+id/navigation_item_enroll"
+        android:name="com.example.garam.jeongoo.home.itemEnrollMent.ItemEnrollFragment"
+        android:label="@string/title_item_enroll"
+        tools:layout="@layout/fragment_item_enroll" />
+
+    <fragment
+        android:id="@+id/navigation_my_info"
+        android:name="com.example.garam.jeongoo.home.myInfo.MyInfoFragment"
+        android:label="@string/title_my_info"
+        tools:layout="@layout/fragment_my_info" />
+</navigation>
