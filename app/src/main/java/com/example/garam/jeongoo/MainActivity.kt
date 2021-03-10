@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
 
         val nextIntent = Intent(this, HomeActivity::class.java)
-        startActivity(nextIntent)
+   //     startActivity(nextIntent)
 
     }
 }
