@@ -1,9 +1,8 @@
 package com.example.garam.jeongoo
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.garam.jeongoo.databinding.ActivityMainBinding
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
 
         val nextIntent = Intent(this, HomeActivity::class.java)
-   //     startActivity(nextIntent)
+        startActivity(nextIntent)
 
     }
 }
