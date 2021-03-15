@@ -11,7 +11,7 @@
         android:label="@string/title_main_menu"
         tools:layout="@layout/fragment_main_menu" />
 
-    <fragment
+     <fragment
         android:id="@+id/navigation_item_enroll"
         android:name="com.example.garam.jeongoo.home.itemEnrollMent.ItemEnrollFragment"
         android:label="@string/title_item_enroll"

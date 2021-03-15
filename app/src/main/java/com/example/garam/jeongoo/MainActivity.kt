@@ -23,8 +23,17 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(JeonGooViewModel::class.java)
         binding.viewModel = viewModel
 
-        val nextIntent = Intent(this, HomeActivity::class.java)
-        startActivity(nextIntent)
+        binding.loginButton.setOnClickListener {
+
+
+        }
+
+        binding.signUpButton.setOnClickListener {
+
+            val nextIntent = Intent(this, HomeActivity::class.java)
+            startActivity(nextIntent)
+
+        }
 
     }
 }
