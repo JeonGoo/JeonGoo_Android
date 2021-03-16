@@ -12,13 +12,13 @@ class EnrollFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_enroll, container, false)
 
         root.findViewById<Button>(R.id.enrollNextButton).setOnClickListener {
             val activity : ItemEnrollActivity = activity as ItemEnrollActivity
             activity.replaceFragment(PictureFragment().newInstance(),this)
         }
+
 
         return root
     }
