@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.garam.jeongoo.R
 import com.example.garam.jeongoo.databinding.FragmentPictureBinding
@@ -17,6 +18,7 @@ import com.example.garam.jeongoo.databinding.FragmentPictureBinding
 class PictureFragment : Fragment() {
 
     private lateinit var binding: FragmentPictureBinding
+    private lateinit var itemEnrollViewModelViewModel: ItemEnrollViewModel
 
     fun newInstance(): PictureFragment {
         return PictureFragment()
@@ -27,11 +29,18 @@ class PictureFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        itemEnrollViewModelViewModel = ViewModelProvider(this.requireActivity()).get(ItemEnrollViewModel::class.java)
+
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_picture,container,false)
 
         binding.productImageCapture.setOnClickListener {
             val intent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult(intent,1)
+        }
+
+        binding.enrollPreviousButton.setOnClickListener {
+            val activity : ItemEnrollActivity = activity as ItemEnrollActivity
+            activity.testReplaceFragment(activity.enroll,this)
         }
 
         return binding.root

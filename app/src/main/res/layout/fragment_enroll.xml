@@ -3,6 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="enrollViewModel"
+            type="com.example.garam.jeongoo.home.itemEnrollMent.ItemEnrollViewModel" />
+
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,6 +32,8 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:text="@={enrollViewModel.productName}"
+                android:id="@+id/productEnrollNameText"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/round_corner"
@@ -39,6 +48,8 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:text="@={enrollViewModel.productInfo}"
+                android:id="@+id/productEnrollInfoText"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/round_corner"
@@ -53,6 +64,8 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:text="@={enrollViewModel.productDetailInfo}"
+                android:id="@+id/productEnrollDetailInfoText"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/round_corner"
@@ -67,6 +80,8 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:text="@={enrollViewModel.productPrice}"
+                android:id="@+id/productEnrollPriceText"
                 android:inputType="number"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
