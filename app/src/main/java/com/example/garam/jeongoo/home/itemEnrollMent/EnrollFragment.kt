@@ -1,25 +1,30 @@
 package com.example.garam.jeongoo.home.itemEnrollMent
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.example.garam.jeongoo.R
+import com.example.garam.jeongoo.databinding.FragmentEnrollBinding
+
 class EnrollFragment : Fragment() {
+
+    private lateinit var binding: FragmentEnrollBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_enroll, container, false)
+    ): View {
 
-        root.findViewById<Button>(R.id.enrollNextButton).setOnClickListener {
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_enroll,container,false)
+
+        binding.enrollNextButton.setOnClickListener {
             val activity : ItemEnrollActivity = activity as ItemEnrollActivity
             activity.replaceFragment(PictureFragment().newInstance(),this)
         }
 
-
-        return root
+        return binding.root
     }
 }
