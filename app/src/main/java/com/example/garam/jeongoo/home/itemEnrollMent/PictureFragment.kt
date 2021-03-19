@@ -1,6 +1,7 @@
 package com.example.garam.jeongoo.home.itemEnrollMent
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -32,6 +33,7 @@ class PictureFragment : Fragment() {
         itemEnrollViewModelViewModel = ViewModelProvider(this.requireActivity()).get(ItemEnrollViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_picture,container,false)
+        binding.lifecycleOwner = this.requireActivity()
 
         binding.productImageCapture.setOnClickListener {
             val intent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
@@ -41,6 +43,13 @@ class PictureFragment : Fragment() {
         binding.enrollPreviousButton.setOnClickListener {
             val activity : ItemEnrollActivity = activity as ItemEnrollActivity
             activity.testReplaceFragment(activity.enroll,this)
+        }
+
+        binding.enrollCompleteButton.setOnClickListener {
+            val dialog = Dialog(this.requireActivity())
+            dialog.setContentView(R.layout.enroll_complete_dialog)
+            dialog.show()
+
         }
 
         return binding.root

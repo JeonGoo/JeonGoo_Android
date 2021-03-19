@@ -8,6 +8,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:gravity="center_horizontal"
         android:background="#F39C12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/productListRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </ScrollView>
