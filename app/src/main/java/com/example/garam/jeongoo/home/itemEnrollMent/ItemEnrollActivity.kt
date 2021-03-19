@@ -21,7 +21,6 @@ class ItemEnrollActivity : AppCompatActivity() {
     fun testReplaceFragment(fragment: Fragment,parentFragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             setCustomAnimations(R.anim.slide_in,R.anim.fade_out,R.anim.fade_in,R.anim.slide_out)
-         //   add(R.id.enrollFrameLayout,fragment)
             show(fragment)
             hide(parentFragment)
             commit()

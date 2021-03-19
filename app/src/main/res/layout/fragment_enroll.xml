@@ -96,17 +96,25 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:background="@drawable/selector_button"
+                    android:id="@+id/newProductButton"
+                    android:text="새상품"
+                    android:textColor="#FEFEFE"
+                    android:onClick="@{() -> enrollViewModel.setProductType(newProductButton)}"
                     android:layout_marginEnd="15dp"
                     android:textStyle="bold"
-                    android:text="새상품"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <Button
+                    android:textColor="#FEFEFE"
+                    android:background="@drawable/selector_button"
+                    android:id="@+id/oldProductButton"
+                    android:text="중고"
+                    android:onClick="@{() -> enrollViewModel.setProductType(oldProductButton)}"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"
-                    android:text="중고"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>

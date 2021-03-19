@@ -12,14 +12,14 @@ import com.example.garam.jeongoo.R
 
 class ItemEnrollFragment : Fragment() {
 
-//    private lateinit var itemEnrollViewModelViewModel: ItemEnrollViewModel
+    private lateinit var itemEnrollViewModelViewModel: ItemEnrollViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-  //      itemEnrollViewModelViewModel = ViewModelProvider(this.requireActivity()).get(ItemEnrollViewModel::class.java)
+        itemEnrollViewModelViewModel = ViewModelProvider(this.requireActivity()).get(ItemEnrollViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_item_enroll, container, false)
 
         val nextIntent = Intent(activity,ItemEnrollActivity::class.java)
