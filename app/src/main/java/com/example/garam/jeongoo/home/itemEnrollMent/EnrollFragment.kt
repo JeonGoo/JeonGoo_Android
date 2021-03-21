@@ -20,10 +20,10 @@ class EnrollFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        itemEnrollViewModelViewModel = ViewModelProvider(this).get(ItemEnrollViewModel::class.java)
+        itemEnrollViewModelViewModel = ViewModelProvider(this.requireActivity()).get(ItemEnrollViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_enroll,container,false)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = this.requireActivity()
         binding.enrollViewModel = itemEnrollViewModelViewModel
 
         binding.enrollNextButton.setOnClickListener {
