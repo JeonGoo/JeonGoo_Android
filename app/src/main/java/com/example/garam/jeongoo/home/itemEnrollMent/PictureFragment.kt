@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -18,6 +19,7 @@ import com.example.garam.jeongoo.databinding.FragmentPictureBinding
 
 class PictureFragment : Fragment() {
 
+    private lateinit var dialog : Dialog
     private lateinit var binding: FragmentPictureBinding
     private lateinit var itemEnrollViewModelViewModel: ItemEnrollViewModel
 
@@ -44,15 +46,23 @@ class PictureFragment : Fragment() {
             val activity : ItemEnrollActivity = activity as ItemEnrollActivity
             activity.testReplaceFragment(activity.enroll,this)
         }
+        dialog = Dialog(this.requireActivity())
+        dialog.setContentView(R.layout.enroll_complete_dialog)
 
         binding.enrollCompleteButton.setOnClickListener {
-            val dialog = Dialog(this.requireActivity())
-            dialog.setContentView(R.layout.enroll_complete_dialog)
-            dialog.show()
-
+            showDialog()
         }
 
         return binding.root
+    }
+
+    private fun showDialog() {
+        dialog.show()
+
+        val button = dialog.findViewById<Button>(R.id.enrollConfirmButton)
+        button.setOnClickListener {
+            this.requireActivity().finish()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
