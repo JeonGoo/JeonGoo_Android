@@ -6,19 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.example.garam.jeongoo.R
 
 class MainMenuFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var mainFragmentViewModel: MainFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel = ViewModelProvider(this.requireActivity()).get(HomeViewModel::class.java)
+        mainFragmentViewModel = ViewModelProvider(this.requireActivity()).get(MainFragmentViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_main_menu, container, false)
 
         return root
