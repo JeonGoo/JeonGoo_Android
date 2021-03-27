@@ -1,33 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".home.main.MainMenuFragment"
-    android:orientation="horizontal">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:gravity="center_horizontal"
-        android:background="#F39C12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <data>
+        <variable
+            name="mainFragmentViewModel"
+            type="com.example.garam.jeongoo.home.main.MainFragmentViewModel" />
+
+    </data>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".home.main.MainMenuFragment"
         android:orientation="horizontal">
 
-        <Button
-            android:text="설정"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:background="#F39C12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
+            <Button
+                android:text="설정"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                itemList="@{mainFragmentViewModel.productItem}"
+                android:id="@+id/productListRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </ScrollView>
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+</layout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/productListRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </ScrollView>
-</LinearLayout>
