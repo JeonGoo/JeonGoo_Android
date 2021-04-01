@@ -18,14 +18,9 @@
         tools:context=".home.main.ProductInfoActivity">
 
         <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/productImageViewPager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"/>
-
-        </androidx.viewpager2.widget.ViewPager2>
+            android:layout_height="200dp"/>
 
         <LinearLayout
             android:layout_marginTop="5dp"

@@ -23,12 +23,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:background="#F39C12"
-                android:src="@drawable/settings"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"/>
+            <EditText
+                android:textSize="20sp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="15dp"
+                android:background="#FEFEFE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
 
+            <Button
+                android:text="검색"
+                android:layout_weight="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <ScrollView
