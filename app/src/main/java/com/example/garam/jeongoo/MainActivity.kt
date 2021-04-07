@@ -39,7 +39,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.signUpButton.setOnClickListener {
-
+            val nextIntent = Intent(this, SignUpActivity::class.java)
+            startActivity(nextIntent)
         }
 
     }
