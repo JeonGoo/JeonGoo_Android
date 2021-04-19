@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.garam.jeongoo.data.SignInData
+import com.example.garam.jeongoo.data.SignUpInfoData
 import com.example.garam.jeongoo.network.NetworkController
 import com.example.garam.jeongoo.network.NetworkService
 import okhttp3.ResponseBody
@@ -45,6 +46,22 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
 
     }
 
+    fun setOnclickSignUp() {
+        signUp(SignUpInfoData(customerDetailAddress.value.toString(),customerPassword.value.toString(),
+        customerName.value.toString(),customerGender.value.toString(),customerDetailAddress.value.toString(),
+        customerPhoneNumber.value.toString()))
+    }
 
+    private fun signUp(signUp : SignUpInfoData) {
+        networkService.signUp(signUp).enqueue(object : Callback<ResponseBody>{
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
 
+            }
+
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+
+            }
+
+        })
+    }
 }
