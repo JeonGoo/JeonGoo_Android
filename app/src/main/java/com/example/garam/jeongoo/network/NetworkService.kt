@@ -1,5 +1,6 @@
 package com.example.garam.jeongoo.network
 
+import com.example.garam.jeongoo.data.ProductInfoData
 import com.example.garam.jeongoo.data.SignInData
 import com.example.garam.jeongoo.data.SignUpInfoData
 import okhttp3.ResponseBody
@@ -18,4 +19,13 @@ interface NetworkService {
         @Body signInInfo : SignInData
     ) : Call<ResponseBody>
 
+    @POST("/v1")
+    fun productEnroll(
+        @Body productInfoData: ProductInfoData
+    ) : Call<ResponseBody>
+
+    @DELETE("v1/{id}")
+    fun productDelete(
+        @Path("id") id : Long
+    ) : Call<ResponseBody>
 }
