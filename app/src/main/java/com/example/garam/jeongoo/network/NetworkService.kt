@@ -18,6 +18,4 @@ interface NetworkService {
         @Body signInInfo : SignInData
     ) : Call<ResponseBody>
 
-    
-
 }
