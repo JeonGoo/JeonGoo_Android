@@ -3,11 +3,18 @@ package com.example.garam.jeongoo.network
 import com.example.garam.jeongoo.data.ProductInfoData
 import com.example.garam.jeongoo.data.SignInData
 import com.example.garam.jeongoo.data.SignUpInfoData
+import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
 interface NetworkService {
+
+    @GET("/v2/local/search/address.json")
+    fun address(
+        @Header("Authorization") key: String,
+        @Query("query") query: String
+    ): Call<JsonObject>
 
     @POST("/v1/signup")
     fun signUp(
@@ -28,4 +35,7 @@ interface NetworkService {
     fun productDelete(
         @Path("id") id : Long
     ) : Call<ResponseBody>
+
+
+
 }

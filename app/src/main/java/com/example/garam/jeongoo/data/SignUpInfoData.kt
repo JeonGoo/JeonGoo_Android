@@ -5,6 +5,5 @@ data class SignUpInfoData(
     val password : String,
     val name : String,
     val genderType : String,
-    val address : String,
     val phoneNumber : String
 )
