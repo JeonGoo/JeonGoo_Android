@@ -31,11 +31,22 @@ interface NetworkService {
         @Body productInfoData: ProductInfoData
     ) : Call<ResponseBody>
 
-    @DELETE("v1/{id}")
+    @DELETE("/api/v1/products/{productId}")
     fun productDelete(
-        @Path("id") id : Long
+        @Path("productId") id : Int
     ) : Call<ResponseBody>
 
+    @GET("/api/v1/products")
+    fun findAllProduct() : Call<ResponseBody>
 
+    @GET("/api/v1/products/{productId}")
+    fun findProduct(
+        @Path("productId") id : Int
+    ) : Call<ResponseBody>
+
+    @GET("/api/v1/products/users/{userId}")
+    fun salesList(
+        @Path("userId") id : Int
+    ) : Call<ResponseBody>
 
 }
