@@ -37,6 +37,7 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    android:text="@={signUpData.customerCityAddress}"
                     android:id="@+id/addressSearchText"
                     android:hint="주소를 검색하세요"
                     android:layout_width="match_parent"
@@ -44,6 +45,7 @@
                     android:layout_weight="1"/>
 
                 <Button
+                    android:onClick="@{() -> signUpData.findAddress()}"
                     android:textColor="#FEFEFE"
                     android:background="#F39C12"
                     android:id="@+id/addressSearchButton"

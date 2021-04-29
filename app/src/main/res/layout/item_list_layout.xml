@@ -20,7 +20,6 @@
             android:orientation="vertical">
 
             <ImageView
-                app:loadAlbumImage="@{itemInfo.imageUrl}"
                 android:id="@+id/productImageView"
                 android:layout_width="100dp"
                 android:layout_height="100dp"/>
@@ -44,14 +43,12 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:text="@{itemInfo.grade}"
                     android:textSize="18sp"
                     android:id="@+id/productGradeTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:text="@{itemInfo.certification}"
                     android:textSize="18sp"
                     android:id="@+id/genuineTextView"
                     android:layout_width="match_parent"
@@ -59,7 +56,6 @@
             </LinearLayout>
 
             <TextView
-                android:text="@{itemInfo.price}"
                 android:textSize="18sp"
                 android:id="@+id/productPriceTextView"
                 android:layout_width="match_parent"
