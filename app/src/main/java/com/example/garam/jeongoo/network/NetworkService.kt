@@ -26,7 +26,7 @@ interface NetworkService {
         @Body signInInfo : SignInData
     ) : Call<ResponseBody>
 
-    @POST("/v1")
+    @POST("/api/v1/products/users/{userId}")
     fun productEnroll(
         @Body productInfoData: ProductInfoData
     ) : Call<ResponseBody>

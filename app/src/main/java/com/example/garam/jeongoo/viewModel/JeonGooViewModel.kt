@@ -1,10 +1,12 @@
 package com.example.garam.jeongoo.viewModel
 
 import android.app.Application
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.garam.jeongoo.BuildConfig
+import com.example.garam.jeongoo.HomeActivity
 import com.example.garam.jeongoo.data.AddressDto
 import com.example.garam.jeongoo.data.SignInData
 import com.example.garam.jeongoo.data.SignUpInfoData
@@ -25,6 +27,7 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
     private val networkService : NetworkService by lazy {
         NetworkController.instance.networkService
     }
+    private val context = getApplication<Application>().applicationContext
     private val retrofit : Retrofit = Retrofit.Builder().baseUrl(KakaoMap.instance.kakaoURL)
         .addConverterFactory(GsonConverterFactory.create()).build()
     private val networkApi = retrofit.create(NetworkService::class.java)
@@ -54,7 +57,8 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
             }
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-
+                val intent = Intent(context,HomeActivity::class.java)
+                context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             }
 
         })
