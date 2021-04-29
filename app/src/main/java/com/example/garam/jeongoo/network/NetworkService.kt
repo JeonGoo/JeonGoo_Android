@@ -16,12 +16,12 @@ interface NetworkService {
         @Query("query") query: String
     ): Call<JsonObject>
 
-    @POST("/v1/signup")
+    @POST("/api/v1/users/signup")
     fun signUp(
         @Body signUpInfo : SignUpInfoData
     ) : Call<ResponseBody>
 
-    @POST("/v1/signin")
+    @POST("/api/v1/users/signin")
     fun signIn(
         @Body signInInfo : SignInData
     ) : Call<ResponseBody>

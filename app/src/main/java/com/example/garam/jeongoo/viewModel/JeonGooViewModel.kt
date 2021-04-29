@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.garam.jeongoo.BuildConfig
+import com.example.garam.jeongoo.data.AddressDto
 import com.example.garam.jeongoo.data.SignInData
 import com.example.garam.jeongoo.data.SignUpInfoData
 import com.example.garam.jeongoo.network.KakaoMap
@@ -61,8 +62,12 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
     }
 
     fun setOnclickSignUp() {
-        signUp(SignUpInfoData(customerEmail.value.toString(),customerPassword.value.toString(),
-        customerName.value.toString(),customerGender.value.toString(), customerPhoneNumber.value.toString()))
+
+        val address = AddressDto(customerCityAddress.value.toString(),
+        customerDetailAddress.value.toString())
+
+        signUp(SignUpInfoData(address,customerEmail.value.toString(),customerPassword.value.toString(),
+        customerName.value.toString(),"MALE", customerPhoneNumber.value.toString()))
     }
 
     private fun signUp(signUp : SignUpInfoData) {
