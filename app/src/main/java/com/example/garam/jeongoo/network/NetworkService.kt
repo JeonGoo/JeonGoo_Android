@@ -1,6 +1,7 @@
 package com.example.garam.jeongoo.network
 
 import com.example.garam.jeongoo.data.ProductInfoData
+import com.example.garam.jeongoo.data.ResponseProductsData
 import com.example.garam.jeongoo.data.SignInData
 import com.example.garam.jeongoo.data.SignUpInfoData
 import com.google.gson.JsonObject
@@ -37,16 +38,25 @@ interface NetworkService {
     ) : Call<ResponseBody>
 
     @GET("/api/v1/products")
-    fun findAllProduct() : Call<ResponseBody>
+    fun findAllProduct() : Call<ResponseProductsData>
 
     @GET("/api/v1/products/{productId}")
     fun findProduct(
         @Path("productId") id : Int
-    ) : Call<ResponseBody>
+    ) : Call<ResponseProductsData>
 
     @GET("/api/v1/products/users/{userId}")
     fun salesList(
         @Path("userId") id : Int
-    ) : Call<ResponseBody>
+    ) : Call<ResponseProductsData>
+
+    @GET("api/v1/purchased/products")
+    fun allPurchasedProducts() : Call<ResponseProductsData>
+
+    @GET("api/v1/purchased/products/users/{userId}/purchased")
+    fun purchasedProducts() : Call<ResponseProductsData>
+
+    @GET("api/v1/purchased/products/users/{userId}/sell")
+    fun sellProducts() : Call<ResponseProductsData>
 
 }
