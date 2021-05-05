@@ -52,12 +52,12 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
     }
 
     private fun signIn(signIn : SignInData) {
-        networkService.signIn(signIn).enqueue(object : Callback<ResponseBody>{
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+        networkService.signIn(signIn).enqueue(object : Callback<JsonObject>{
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
 
             }
 
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                 val intent = Intent(context,HomeActivity::class.java)
                 context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             }
@@ -81,12 +81,12 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
     }
 
     private fun signUp(signUp : SignUpInfoData) {
-        networkService.signUp(signUp).enqueue(object : Callback<ResponseBody>{
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+        networkService.signUp(signUp).enqueue(object : Callback<JsonObject>{
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
 
             }
 
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
 
             }
 
