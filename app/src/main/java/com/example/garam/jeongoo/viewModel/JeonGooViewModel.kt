@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.garam.jeongoo.BuildConfig
 import com.example.garam.jeongoo.HomeActivity
+import com.example.garam.jeongoo.SignUpActivity
 import com.example.garam.jeongoo.data.AddressDto
 import com.example.garam.jeongoo.data.SignInData
 import com.example.garam.jeongoo.data.SignUpInfoData
@@ -65,6 +66,11 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
 
     }
 
+    fun signUpActivity() {
+        val intent = Intent(context,SignUpActivity::class.java)
+        context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+    }
+
     fun setOnclickSignUp() {
 
         val address = AddressDto(customerCityAddress.value.toString(),
@@ -89,12 +95,9 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
 
     fun findAddress() {
 
-        Log.e("address",customerCityAddress.value)
-
         networkApi.address(BuildConfig.KakaoKey,customerCityAddress.value.toString()).enqueue(
             object : Callback<JsonObject> {
                 override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                    Log.e("???",t.message)
                 }
 
                 override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
