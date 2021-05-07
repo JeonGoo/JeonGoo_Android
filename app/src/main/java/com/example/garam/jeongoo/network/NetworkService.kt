@@ -20,22 +20,28 @@ interface NetworkService {
     @POST("/api/v1/users/signup")
     fun signUp(
         @Body signUpInfo : SignUpInfoData
-    ) : Call<ResponseBody>
+    ) : Call<JsonObject>
 
     @POST("/api/v1/users/signin")
     fun signIn(
         @Body signInInfo : SignInData
-    ) : Call<ResponseBody>
+    ) : Call<JsonObject>
+
+    @POST("/api/v1/products/{productId}/purchase/{userId}")
+    fun purchase(
+        @Path("productId") productId : Int,
+        @Path("userId") userId : Int
+    ) : Call<JsonObject>
 
     @POST("/api/v1/products/users/{userId}")
     fun productEnroll(
         @Body productInfoData: ProductInfoData
-    ) : Call<ResponseBody>
+    ) : Call<JsonObject>
 
     @DELETE("/api/v1/products/{productId}")
     fun productDelete(
         @Path("productId") id : Int
-    ) : Call<ResponseBody>
+    ) : Call<JsonObject>
 
     @GET("/api/v1/products")
     fun findAllProduct() : Call<ResponseProductsData>
