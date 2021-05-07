@@ -43,6 +43,12 @@ interface NetworkService {
         @Path("productId") id : Int
     ) : Call<JsonObject>
 
+    @PUT("/api/v1/users/{userId}")
+    fun userUpdate(
+        @Body updateRequest : JsonObject,
+        @Path("userId") userId : Int
+    ) : Call<JsonObject>
+
     @GET("/api/v1/products")
     fun findAllProduct() : Call<ResponseProductsData>
 
