@@ -178,6 +178,7 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    android:inputType="textPassword"
                     android:background="@drawable/round_corner"
                     android:layout_weight="1"
                     android:text="@={signUpData.customerPassword}"
