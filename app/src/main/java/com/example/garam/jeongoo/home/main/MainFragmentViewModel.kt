@@ -14,6 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainFragmentViewModel : ViewModel() {
+
     private val networkService : NetworkService by lazy {
         NetworkController.instance.networkService
     }
@@ -21,7 +22,7 @@ class MainFragmentViewModel : ViewModel() {
     val productItem = ObservableArrayList<ProductDetailDto>()
 
     fun getProducts() {
-
+        productItem.clear()
         networkService.findAllProduct().enqueue(object : Callback<ResponseProductsData>{
 
             override fun onFailure(call: Call<ResponseProductsData>, t: Throwable) {
