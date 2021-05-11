@@ -1,15 +1,11 @@
 package com.example.garam.jeongoo.data
 
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import com.google.gson.annotations.SerializedName
 
 data class ResponseProductsData(
-    val certificationFailedReason : String,
-    val certificationStatus : String,
-    val description : String,
-    val fileList : ArrayList<JsonObject>,
-    val id : Long,
-    val name : String,
-    val price : JsonObject,
-    val productGrade : String,
-    val useStatus : String
+    val data : JsonArray,
+    val message : String,
+    val statusCode : Int
 )
