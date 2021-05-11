@@ -3,6 +3,7 @@ package com.example.garam.jeongoo.viewModel
 import android.app.Application
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.garam.jeongoo.BuildConfig
@@ -15,7 +16,6 @@ import com.example.garam.jeongoo.network.KakaoMap
 import com.example.garam.jeongoo.network.NetworkController
 import com.example.garam.jeongoo.network.NetworkService
 import com.google.gson.JsonObject
-import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -87,7 +87,10 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
             }
 
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                if(response.body()!!["message"].toString() == "회원 가입 성공") {
+                    Toast.makeText(context,"회원 가입에 성공했습니다",Toast.LENGTH_SHORT).show()
 
+                }
             }
 
         })

@@ -1,13 +1,14 @@
 package com.example.garam.jeongoo
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.garam.jeongoo.data.ProductInfoData
+import com.example.garam.jeongoo.data.ProductDetailDto
 import com.example.garam.jeongoo.databinding.ItemListLayoutBinding
 
 class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-    var items = ArrayList<ProductInfoData>()
+    var items = ArrayList<ProductDetailDto>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemListLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -23,7 +24,8 @@ class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(private val binding: ItemListLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ProductInfoData ) {
+        fun bind(item: ProductDetailDto ) {
+            Log.e("???",item.name)
             binding.itemInfo = item
         }
     }

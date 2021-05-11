@@ -4,22 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.BindingAdapter
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.garam.jeongoo.R
+import com.example.garam.jeongoo.databinding.FragmentMainMenuBinding
 
 class MainMenuFragment : Fragment() {
 
     private lateinit var mainFragmentViewModel: MainFragmentViewModel
-
+    private lateinit var binding: FragmentMainMenuBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         mainFragmentViewModel = ViewModelProvider(this.requireActivity()).get(MainFragmentViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_main_menu, container, false)
 
-        return root
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_main_menu,container,false)
+        binding.lifecycleOwner = this
+        binding.mainFragmentViewModel = mainFragmentViewModel
+
+        mainFragmentViewModel.getProducts()
+
+        return binding.root
     }
 }

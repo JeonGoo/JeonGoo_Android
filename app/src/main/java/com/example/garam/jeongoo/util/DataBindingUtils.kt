@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.garam.jeongoo.R
 import com.example.garam.jeongoo.RecyclerAdapter
-import com.example.garam.jeongoo.data.ProductInfoData
+import com.example.garam.jeongoo.data.ProductDetailDto
 
 object DataBindingUtils {
 
     @BindingAdapter("itemList")
     @JvmStatic
-    fun bindItem(recyclerView: RecyclerView, items: ObservableArrayList<ProductInfoData>) {
+    fun bindItem(recyclerView: RecyclerView, items: ObservableArrayList<ProductDetailDto>) {
         if(recyclerView.adapter == null) {
             val lm = LinearLayoutManager(recyclerView.context)
             val adapter = RecyclerAdapter()
