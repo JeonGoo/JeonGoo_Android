@@ -43,12 +43,15 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:layout_weight="1"
+                    android:text="@{itemInfo.productGrade}"
                     android:textSize="18sp"
                     android:id="@+id/productGradeTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:layout_weight="1"
                     android:textSize="18sp"
                     android:id="@+id/genuineTextView"
                     android:layout_width="match_parent"
