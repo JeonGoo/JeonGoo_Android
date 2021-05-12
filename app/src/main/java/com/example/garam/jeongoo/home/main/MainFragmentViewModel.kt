@@ -2,9 +2,12 @@ package com.example.garam.jeongoo.home.main
 
 import android.util.Log
 import androidx.databinding.ObservableArrayList
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.garam.jeongoo.data.ProductDetailDto
 import com.example.garam.jeongoo.data.ProductInfoData
+import com.example.garam.jeongoo.data.ResponseProductDetailData
 import com.example.garam.jeongoo.data.ResponseProductsData
 import com.example.garam.jeongoo.network.NetworkController
 import com.example.garam.jeongoo.network.NetworkService
@@ -20,6 +23,7 @@ class MainFragmentViewModel : ViewModel() {
     }
 
     val productItem = ObservableArrayList<ProductDetailDto>()
+    val currentProduct = MutableLiveData<ProductDetailDto>()
 
     fun getProducts() {
         productItem.clear()
@@ -54,6 +58,35 @@ class MainFragmentViewModel : ViewModel() {
             }
         })
 
+    }
+
+    fun getDetailProductInfo(id: Int) {
+        networkService.findProduct(id).enqueue(object : Callback<ResponseProductDetailData>{
+            override fun onFailure(call: Call<ResponseProductDetailData>, t: Throwable) {
+
+            }
+
+            override fun onResponse(
+                call: Call<ResponseProductDetailData>,
+                response: Response<ResponseProductDetailData>
+            ) {
+                val res = response.body()!!
+                currentProduct.value = ProductDetailDto(
+                    res.data.asJsonObject["productDetailDto"].asJsonObject["certificationFailedReason"]?.toString(),
+                    res.data.asJsonObject["productDetailDto"].asJsonObject["certificationStatus"]?.asString,
+                    res.data.asJsonObject["productDetailDto"].asJsonObject["description"].asString,
+                    res.data.asJsonObject["productDetailDto"].asJsonObject["fileList"].asJsonArray,
+                    res.data.asJsonObject["productDetailDto"].asJsonObject["id"].asInt,
+                    res.data.asJsonObject["productDetailDto"].asJsonObject["name"].asString,
+                    res.data.asJsonObject["productDetailDto"].asJsonObject["price"].asInt,
+                    res.data.asJsonObject["productDetailDto"].asJsonObject["productGrade"].asString,
+                    res.data.asJsonObject["productDetailDto"].asJsonObject["useStatus"].asString,
+                    res.data.asJsonObject["productDetailDto"].asJsonObject["salesStatus"].asString,
+                    ProductDetailDto.UserShowResponse(res.data.asJsonObject["userShowResponse"].asJsonObject["name"].asString,
+                        res.data.asJsonObject["userShowResponse"].asJsonObject["phoneNumber"].asString)
+                )
+            }
+        })
     }
 
 }
