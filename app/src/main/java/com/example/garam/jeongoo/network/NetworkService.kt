@@ -1,9 +1,6 @@
 package com.example.garam.jeongoo.network
 
-import com.example.garam.jeongoo.data.ProductInfoData
-import com.example.garam.jeongoo.data.ResponseProductsData
-import com.example.garam.jeongoo.data.SignInData
-import com.example.garam.jeongoo.data.SignUpInfoData
+import com.example.garam.jeongoo.data.*
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -55,7 +52,7 @@ interface NetworkService {
     @GET("/api/v1/products/{productId}")
     fun findProduct(
         @Path("productId") id : Int
-    ) : Call<ResponseProductsData>
+    ) : Call<ResponseProductDetailData>
 
     @GET("/api/v1/products/users/{userId}")
     fun salesList(
