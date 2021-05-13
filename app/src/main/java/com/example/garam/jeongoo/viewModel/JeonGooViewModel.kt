@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.garam.jeongoo.BuildConfig
 import com.example.garam.jeongoo.HomeActivity
+import com.example.garam.jeongoo.PreferenceManager
 import com.example.garam.jeongoo.SignUpActivity
 import com.example.garam.jeongoo.data.AddressDto
 import com.example.garam.jeongoo.data.SignInData
@@ -58,6 +59,18 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
             }
 
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                val res = response.body()!!
+                val data = res["data"].asJsonObject
+
+                val id = data["id"].asInt
+                val token = data["token"].asString
+
+                Log.e("id : ",id.toString())
+                Log.e("token : ",token)
+
+                PreferenceManager().setToken(context,"token",token)
+                PreferenceManager().setId(context,"userId",id)
+
                 val intent = Intent(context,HomeActivity::class.java)
                 context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             }
@@ -105,7 +118,6 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
 
                 override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                     val res = response.body()
-                    Log.e("fadfa",res.toString())
                     val documents = res?.getAsJsonArray("documents")
                     val meta = res?.getAsJsonObject("meta")
                     val totalCount = meta?.get("total_count")?.asInt
