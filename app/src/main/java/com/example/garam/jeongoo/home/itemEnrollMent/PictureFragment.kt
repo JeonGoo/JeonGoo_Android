@@ -62,6 +62,7 @@ class PictureFragment : Fragment() {
 
         val button = dialog.findViewById<Button>(R.id.enrollConfirmButton)
         button.setOnClickListener {
+            dialog.dismiss()
             this.activity?.finish()
         }
     }

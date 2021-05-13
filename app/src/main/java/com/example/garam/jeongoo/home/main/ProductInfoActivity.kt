@@ -16,7 +16,6 @@ class ProductInfoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_product_info)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_product_info)
 
         mainFragmentViewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
