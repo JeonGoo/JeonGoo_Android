@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(JeonGooViewModel::class.java)
         binding.viewModel = viewModel
-
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
