@@ -50,6 +50,7 @@ class PictureFragment : Fragment() {
         dialog.setContentView(R.layout.enroll_complete_dialog)
 
         binding.enrollCompleteButton.setOnClickListener {
+            itemEnrollViewModelViewModel.productRegister()
             showDialog()
         }
 

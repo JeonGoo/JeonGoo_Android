@@ -2,7 +2,6 @@ package com.example.garam.jeongoo.network
 
 import com.example.garam.jeongoo.data.*
 import com.google.gson.JsonObject
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -32,7 +31,9 @@ interface NetworkService {
 
     @POST("/api/v1/products/users/{userId}")
     fun productEnroll(
-        @Body productInfoData: ProductInfoData
+        @Header("Authorization") token : String,
+        @Body productInfoData: ProductRequest,
+        @Path ("userId") userId: Int
     ) : Call<JsonObject>
 
     @DELETE("/api/v1/products/{productId}")

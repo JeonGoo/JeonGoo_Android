@@ -62,14 +62,16 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
                 val res = response.body()!!
                 val data = res["data"].asJsonObject
 
+                val preferenceManager = PreferenceManager()
+
                 val id = data["id"].asInt
                 val token = data["token"].asString
 
                 Log.e("id : ",id.toString())
                 Log.e("token : ",token)
 
-                PreferenceManager().setToken(context,"token",token)
-                PreferenceManager().setId(context,"userId",id)
+                preferenceManager.setToken(context,"token",token)
+                preferenceManager.setId(context,"userId",id)
 
                 val intent = Intent(context,HomeActivity::class.java)
                 context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))

@@ -2,16 +2,13 @@ package com.example.garam.jeongoo.home.main
 
 import android.util.Log
 import androidx.databinding.ObservableArrayList
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.garam.jeongoo.data.ProductDetailDto
-import com.example.garam.jeongoo.data.ProductInfoData
 import com.example.garam.jeongoo.data.ResponseProductDetailData
 import com.example.garam.jeongoo.data.ResponseProductsData
 import com.example.garam.jeongoo.network.NetworkController
 import com.example.garam.jeongoo.network.NetworkService
-import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
