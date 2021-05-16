@@ -59,22 +59,26 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
             }
 
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                val res = response.body()!!
-                val data = res["data"].asJsonObject
 
-                val preferenceManager = PreferenceManager()
+                if(response.body() != null) {
+                    val res = response.body()!!
+                    val data = res["data"].asJsonObject
 
-                val id = data["id"].asInt
-                val token = data["token"].asString
+                    val preferenceManager = PreferenceManager()
 
-                Log.e("id : ",id.toString())
-                Log.e("token : ",token)
+                    val id = data["id"].asInt
+                    val token = data["token"].asString
 
-                preferenceManager.setToken(context,"token",token)
-                preferenceManager.setId(context,"userId",id)
+                    Log.e("id : ",id.toString())
+                    Log.e("token : ",token)
 
-                val intent = Intent(context,HomeActivity::class.java)
-                context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                    preferenceManager.setToken(context,"token",token)
+                    preferenceManager.setId(context,"userId",id)
+
+                    val intent = Intent(context,HomeActivity::class.java)
+                    context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                }
+
             }
 
         })
