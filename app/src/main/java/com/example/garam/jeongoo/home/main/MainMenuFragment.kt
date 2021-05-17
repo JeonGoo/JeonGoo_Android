@@ -28,6 +28,10 @@ class MainMenuFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.mainFragmentViewModel = mainFragmentViewModel
 
+        val preferenceManager = PreferenceManager()
+        mainFragmentViewModel.userId.value = preferenceManager.getId(this.requireContext(),"userId")
+        mainFragmentViewModel.token.value = preferenceManager.getToken(this.requireContext(),"token")
+
         mainFragmentViewModel.getProducts()
         return binding.root
     }

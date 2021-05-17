@@ -108,6 +108,7 @@
                 android:layout_height="wrap_content"/>
 
             <Button
+                android:onClick="@{() -> mainFragmentViewModel.purchaseProduct(mainFragmentViewModel.userId,mainFragmentViewModel.productId)}"
                 android:textColor="#FEFEFE"
                 android:backgroundTint="#F39C12"
                 android:text="구매하기"

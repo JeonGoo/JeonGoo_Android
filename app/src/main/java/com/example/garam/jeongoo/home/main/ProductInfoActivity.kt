@@ -25,6 +25,7 @@ class ProductInfoActivity : AppCompatActivity() {
 
         val id = intent.getIntExtra("productId",0)
         mainFragmentViewModel.getDetailProductInfo(id)
+        mainFragmentViewModel.productId.value = id
 
         val viewPager = findViewById<ViewPager2>(R.id.productImageViewPager)
         val fragmentAdapter = ImageFragmentAdapter(this)
