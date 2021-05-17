@@ -9,6 +9,7 @@ import com.example.garam.jeongoo.data.ResponseProductDetailData
 import com.example.garam.jeongoo.data.ResponseProductsData
 import com.example.garam.jeongoo.network.NetworkController
 import com.example.garam.jeongoo.network.NetworkService
+import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +22,9 @@ class MainFragmentViewModel : ViewModel() {
 
     val productItem = ObservableArrayList<ProductDetailDto>()
     val currentProduct = MutableLiveData<ProductDetailDto>()
+    val productId = MutableLiveData<Int>()
+    val token = MutableLiveData<String>()
+    val userId = MutableLiveData<Int>()
 
     fun getProducts() {
         productItem.clear()
@@ -68,6 +72,7 @@ class MainFragmentViewModel : ViewModel() {
                 response: Response<ResponseProductDetailData>
             ) {
                 val res = response.body()!!
+
                 currentProduct.value = ProductDetailDto(
                     res.data.asJsonObject["productDetailDto"].asJsonObject["certificationFailedReason"]?.toString(),
                     res.data.asJsonObject["productDetailDto"].asJsonObject["certificationStatus"]?.asString,
@@ -82,6 +87,18 @@ class MainFragmentViewModel : ViewModel() {
                     ProductDetailDto.UserShowResponse(res.data.asJsonObject["userShowResponse"].asJsonObject["name"].asString,
                         res.data.asJsonObject["userShowResponse"].asJsonObject["phoneNumber"].asString)
                 )
+            }
+        })
+    }
+
+    fun purchaseProduct(userId: Int, productId: Int) {
+        networkService.purchase(productId,userId).enqueue(object : Callback<JsonObject>{
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+
             }
         })
     }

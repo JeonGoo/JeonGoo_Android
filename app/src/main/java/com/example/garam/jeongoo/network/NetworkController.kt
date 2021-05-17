@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkController : Application() {
-    private val baseUrl = "https://fef4a866494d.ngrok.io"
+    private val baseUrl = "https://35a1210a4250.ngrok.io"
 
     lateinit var networkService : NetworkService
 

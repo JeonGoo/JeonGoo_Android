@@ -66,14 +66,14 @@ class ItemEnrollViewModel : ViewModel() {
         Log.e("Fads",ProductRequest(ProductBasicInfoRequest.FileInfoRequest(arrayListOf(null)),
             ProductBasicInfoRequest(
                 productName.value.toString(),"0000",productStatus.value.toString(),
-                productDescription.value.toString(),100000
+                productDescription.value.toString(),productPrice.value!!.toInt()
             )).toString())
 
         networkService.productEnroll("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0QHQuY29tIiwiaWF0IjoxNjIwODkyNTE2LCJleHAiOjE2ODM5NjQ1MTZ9.TJJP8x50DiIEAIZKONCr53Q8x1DnW6-kzKHNzOzBNaY"
             ,ProductRequest(ProductBasicInfoRequest.FileInfoRequest(arrayListOf(null)),
             ProductBasicInfoRequest(
                 productName.value.toString(),"0000",productStatus.value.toString(),
-                productDescription.value.toString(),100000
+                productDescription.value.toString(),productPrice.value!!.toInt()
             )
         ),1).enqueue(object : Callback<JsonObject>{
 

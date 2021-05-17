@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.example.garam.jeongoo.R
 
-class ImageFragment(val image: Int) : Fragment() {
+class ImageFragment(private val image: Int) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
