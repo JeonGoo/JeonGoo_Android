@@ -47,25 +47,28 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:src="@drawable/ic_iconmonstr_task_thin"
             android:layout_marginStart="20dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginEnd="5dp"
-            android:background="#878787"/>
+            android:background="#00FEFEFE"/>
 
         <ImageView
+            android:src="@drawable/ic_iconmonstr_shopping_bag_8"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="#878787"/>
+            android:background="#00FEFEFE"/>
 
         <ImageView
+            android:src="@drawable/ic_iconmonstr_favorite_3"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="20dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="#878787"/>
+            android:background="#00FEFEFE"/>
 
     </LinearLayout>
 
@@ -76,6 +79,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="#000000"
             android:textSize="18sp"
             android:gravity="center"
             android:textStyle="bold"
@@ -85,6 +89,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:textColor="#000000"
             android:textSize="18sp"
             android:gravity="center"
             android:textStyle="bold"
@@ -94,6 +99,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:textColor="#000000"
             android:textSize="18sp"
             android:gravity="center"
             android:textStyle="bold"

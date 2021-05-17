@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:textSize="20sp"
                 android:text="@{mainFragmentViewModel.currentProduct.name}"
                 android:id="@+id/detailProductInfoNameTextView"
                 android:layout_width="match_parent"
@@ -92,6 +93,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="100dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
