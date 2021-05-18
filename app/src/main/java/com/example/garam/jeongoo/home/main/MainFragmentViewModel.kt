@@ -39,19 +39,21 @@ class MainFragmentViewModel : ViewModel() {
                 response: Response<ResponseProductsData>
             ) {
                 val res = response.body()!!
-                Log.e("데이터",res.toString())
+
                 repeat(res.data.size()) {
+                    val productDetail = res.data[it].asJsonObject["productDetailDto"]
+
                     productItem.add(ProductDetailDto(
-                        res.data[it].asJsonObject["productDetailDto"].asJsonObject["certificationFailedReason"]?.toString(),
-                        res.data[it].asJsonObject["productDetailDto"].asJsonObject["certificationStatus"]?.asString,
-                        res.data[it].asJsonObject["productDetailDto"].asJsonObject["description"].asString,
-                        res.data[it].asJsonObject["productDetailDto"].asJsonObject["fileList"].asJsonArray,
-                        res.data[it].asJsonObject["productDetailDto"].asJsonObject["id"].asInt,
-                        res.data[it].asJsonObject["productDetailDto"].asJsonObject["name"].asString,
-                        res.data[it].asJsonObject["productDetailDto"].asJsonObject["price"].asInt,
-                        res.data[it].asJsonObject["productDetailDto"].asJsonObject["productGrade"].asString,
-                        res.data[it].asJsonObject["productDetailDto"].asJsonObject["useStatus"].asString,
-                        res.data[it].asJsonObject["productDetailDto"].asJsonObject["salesStatus"].asString,
+                        productDetail.asJsonObject["certificationFailedReason"]?.toString(),
+                        productDetail.asJsonObject["certificationStatus"]?.asString,
+                        productDetail.asJsonObject["description"].asString,
+                        productDetail.asJsonObject["fileList"].asJsonArray,
+                        productDetail.asJsonObject["id"].asInt,
+                        productDetail.asJsonObject["name"].asString,
+                        productDetail.asJsonObject["price"].asInt,
+                        productDetail.asJsonObject["productGrade"].asString,
+                        productDetail.asJsonObject["useStatus"].asString,
+                        productDetail.asJsonObject["salesStatus"].asString,
                         ProductDetailDto.UserShowResponse(res.data[it].asJsonObject["userShowResponse"].asJsonObject["name"].asString,
                             res.data[it].asJsonObject["userShowResponse"].asJsonObject["phoneNumber"].asString)))
                 }
@@ -72,18 +74,19 @@ class MainFragmentViewModel : ViewModel() {
                 response: Response<ResponseProductDetailData>
             ) {
                 val res = response.body()!!
+                val productDetail = res.data.asJsonObject["productDetailDto"]
 
                 currentProduct.value = ProductDetailDto(
-                    res.data.asJsonObject["productDetailDto"].asJsonObject["certificationFailedReason"]?.toString(),
-                    res.data.asJsonObject["productDetailDto"].asJsonObject["certificationStatus"]?.asString,
-                    res.data.asJsonObject["productDetailDto"].asJsonObject["description"].asString,
-                    res.data.asJsonObject["productDetailDto"].asJsonObject["fileList"].asJsonArray,
-                    res.data.asJsonObject["productDetailDto"].asJsonObject["id"].asInt,
-                    res.data.asJsonObject["productDetailDto"].asJsonObject["name"].asString,
-                    res.data.asJsonObject["productDetailDto"].asJsonObject["price"].asInt,
-                    res.data.asJsonObject["productDetailDto"].asJsonObject["productGrade"].asString,
-                    res.data.asJsonObject["productDetailDto"].asJsonObject["useStatus"].asString,
-                    res.data.asJsonObject["productDetailDto"].asJsonObject["salesStatus"].asString,
+                    productDetail.asJsonObject["certificationFailedReason"]?.toString(),
+                    productDetail.asJsonObject["certificationStatus"]?.asString,
+                    productDetail.asJsonObject["description"].asString,
+                    productDetail.asJsonObject["fileList"].asJsonArray,
+                    productDetail.asJsonObject["id"].asInt,
+                    productDetail.asJsonObject["name"].asString,
+                    productDetail.asJsonObject["price"].asInt,
+                    productDetail.asJsonObject["productGrade"].asString,
+                    productDetail.asJsonObject["useStatus"].asString,
+                    productDetail.asJsonObject["salesStatus"].asString,
                     ProductDetailDto.UserShowResponse(res.data.asJsonObject["userShowResponse"].asJsonObject["name"].asString,
                         res.data.asJsonObject["userShowResponse"].asJsonObject["phoneNumber"].asString)
                 )
