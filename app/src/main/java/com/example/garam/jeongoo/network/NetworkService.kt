@@ -75,5 +75,8 @@ interface NetworkService {
         @Path("userId") userId: Int
     ): Call<JsonObject>
 
-
+    @GET("api/v1/interest/products/users/{interestedUserId}")
+    fun findInterestProduct(
+        @Path("interestedUserId") userId: Int
+    ) : Call<JsonObject>
 }
