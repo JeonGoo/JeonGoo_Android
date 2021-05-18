@@ -69,4 +69,11 @@ interface NetworkService {
     @GET("api/v1/purchased/products/users/{userId}/sell")
     fun sellProducts() : Call<ResponseProductsData>
 
+    @POST("api/v1/interest/products/{productId}/users/{usersId}")
+    fun registerInterestProduct(
+        @Path("productId") productId: Int,
+        @Path("userId") userId: Int
+    ): Call<JsonObject>
+
+
 }
