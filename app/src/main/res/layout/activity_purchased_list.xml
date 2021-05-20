@@ -2,9 +2,8 @@
 <layout>
 
     <data>
-
         <variable
-            name="saleViewModel"
+            name="purchaseViewModel"
             type="com.example.garam.jeongoo.home.myInfo.MyInfoViewModel" />
 
     </data>
@@ -15,17 +14,18 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".home.myInfo.SaleListActivity">
+        tools:context=".PurchasedListActivity">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                itemList="@{saleViewModel.productItem}"
-                android:id="@+id/saleListRecyclerView"
+                itemList="@{purchaseViewModel.productItem}"
+                android:id="@+id/purchasedRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
         </ScrollView>
     </LinearLayout>
 </layout>

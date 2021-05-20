@@ -1,6 +1,9 @@
 package com.example.garam.jeongoo.home.myInfo
 
+import androidx.databinding.ObservableArrayList
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.garam.jeongoo.data.ProductDetailDto
 import com.example.garam.jeongoo.data.ResponseProductsData
 import com.example.garam.jeongoo.network.NetworkController
 import com.example.garam.jeongoo.network.NetworkService
@@ -14,6 +17,9 @@ class MyInfoViewModel : ViewModel() {
     private val networkService : NetworkService by lazy {
         NetworkController.instance.networkService
     }
+
+    val productItem = ObservableArrayList<ProductDetailDto>()
+    val currentProduct = MutableLiveData<ProductDetailDto>()
 
     fun getSellList(userId: Int){
         networkService.sellProducts(userId).enqueue(object : Callback<ResponseProductsData>{
