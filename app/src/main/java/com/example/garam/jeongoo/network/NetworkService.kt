@@ -64,10 +64,14 @@ interface NetworkService {
     fun allPurchasedProducts() : Call<ResponseProductsData>
 
     @GET("api/v1/purchased/products/users/{userId}/purchased")
-    fun purchasedProducts() : Call<ResponseProductsData>
+    fun purchasedProducts(
+        @Path ("userId") userId: Int
+    ) : Call<ResponseProductsData>
 
     @GET("api/v1/purchased/products/users/{userId}/sell")
-    fun sellProducts() : Call<ResponseProductsData>
+    fun sellProducts(
+        @Path ("userId") userId: Int
+    ) : Call<ResponseProductsData>
 
     @POST("api/v1/interest/products/{productId}/users/{usersId}")
     fun registerInterestProduct(

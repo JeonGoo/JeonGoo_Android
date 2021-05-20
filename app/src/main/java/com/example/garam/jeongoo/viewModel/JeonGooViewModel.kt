@@ -1,8 +1,9 @@
 package com.example.garam.jeongoo.viewModel
 
+import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -69,9 +70,6 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
                     val id = data["id"].asInt
                     val token = data["token"].asString
 
-                    Log.e("id : ",id.toString())
-                    Log.e("token : ",token)
-
                     preferenceManager.setToken(context,"token",token)
                     preferenceManager.setId(context,"userId",id)
 
@@ -106,8 +104,9 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
             }
 
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                if(response.body()!!["message"].toString() == "회원 가입 성공") {
+                if(response.body()!!["statusCode"].toString() == "회원 가입 성공") {
                     Toast.makeText(context,"회원 가입에 성공했습니다",Toast.LENGTH_SHORT).show()
+            //        (context as Activity).finish()
 
                 }
             }

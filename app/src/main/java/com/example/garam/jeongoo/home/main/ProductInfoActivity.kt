@@ -31,8 +31,6 @@ class ProductInfoActivity : AppCompatActivity() {
         val fragmentAdapter = ImageFragmentAdapter(this)
         viewPager.adapter = fragmentAdapter
 
-
-
         findViewById<TextView>(R.id.detailProductInfoNameTextView).text = id.toString()
 
     }

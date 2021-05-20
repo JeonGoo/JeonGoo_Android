@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
-                android:text="@{enrollViewModel.productPrice.toString()}"
+                android:text="@={enrollViewModel.productPrice}"
                 android:id="@+id/productEnrollPriceText"
                 android:inputType="number"
                 android:textSize="20sp"
