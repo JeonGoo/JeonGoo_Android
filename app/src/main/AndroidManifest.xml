@@ -21,8 +21,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PurchasedListActivity"></activity>
-        <activity android:name=".home.myInfo.SaleListActivity" />
+        <activity
+            android:name=".home.myInfo.PurchasedListActivity"
+            android:label="@string/purchasedList"/>
+        <activity
+            android:name=".home.myInfo.SaleListActivity"
+            android:label="@string/saleList"/>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".home.main.ProductInfoActivity" />
         <activity android:name=".home.itemEnrollMent.ItemEnrollActivity" />
