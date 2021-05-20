@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.garam.jeongoo.PreferenceManager
 import com.example.garam.jeongoo.R
 import com.example.garam.jeongoo.databinding.FragmentPictureBinding
 
@@ -21,7 +22,7 @@ class PictureFragment : Fragment() {
 
     private lateinit var dialog : Dialog
     private lateinit var binding: FragmentPictureBinding
-    private lateinit var itemEnrollViewModelViewModel: ItemEnrollViewModel
+    private lateinit var itemEnrollViewModel: ItemEnrollViewModel
 
     fun newInstance(): PictureFragment {
         return PictureFragment()
@@ -32,10 +33,14 @@ class PictureFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        itemEnrollViewModelViewModel = ViewModelProvider(this.requireActivity()).get(ItemEnrollViewModel::class.java)
+        itemEnrollViewModel = ViewModelProvider(this.requireActivity()).get(ItemEnrollViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_picture,container,false)
         binding.lifecycleOwner = this.requireActivity()
+
+        val preferenceManager = PreferenceManager()
+        itemEnrollViewModel.token.value = preferenceManager.getToken(this.requireContext(),"token")
+        itemEnrollViewModel.userId.value = preferenceManager.getId(this.requireContext(),"userId")
 
         binding.productImageCapture.setOnClickListener {
             val intent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
@@ -50,7 +55,7 @@ class PictureFragment : Fragment() {
         dialog.setContentView(R.layout.enroll_complete_dialog)
 
         binding.enrollCompleteButton.setOnClickListener {
-            itemEnrollViewModelViewModel.productRegister()
+            itemEnrollViewModel.productRegister()
             showDialog()
         }
 

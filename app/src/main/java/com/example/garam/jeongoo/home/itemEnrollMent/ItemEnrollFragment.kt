@@ -7,20 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import com.example.garam.jeongoo.PreferenceManager
 import com.example.garam.jeongoo.R
 
 class ItemEnrollFragment : Fragment() {
 
-    private lateinit var itemEnrollViewModelViewModel: ItemEnrollViewModel
+    private lateinit var itemEnrollViewModel: ItemEnrollViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        itemEnrollViewModelViewModel = ViewModelProvider(this.requireActivity()).get(ItemEnrollViewModel::class.java)
+        itemEnrollViewModel = ViewModelProvider(this.requireActivity()).get(ItemEnrollViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_item_enroll, container, false)
+
+        val preferenceManager = PreferenceManager()
+        itemEnrollViewModel.token.value = preferenceManager.getToken(this.requireContext(),"token")
+        itemEnrollViewModel.userId.value = preferenceManager.getId(this.requireContext(),"userId")
 
         val nextIntent = Intent(activity,ItemEnrollActivity::class.java)
         startActivity(nextIntent)

@@ -28,8 +28,11 @@ class ItemEnrollViewModel : ViewModel() {
     val productName = MutableLiveData<String> ()
     val productInfo = MutableLiveData<String> ()
     val productDescription = MutableLiveData<String> ()
-    val productPrice = MutableLiveData<Int> ()
+    var productPrice = MutableLiveData<String> ()
     private val productStatus = MutableLiveData<String> ()
+
+    val token = MutableLiveData<String>()
+    val userId = MutableLiveData<Int>()
 
     fun setProductType(button: Button) {
         when(button.id) {
@@ -40,7 +43,7 @@ class ItemEnrollViewModel : ViewModel() {
                 }
                 else {
                     button.isSelected = true
-                    productStatus.value = "NONE"
+                    productStatus.value = "DISUSED"
                     Log.e("Test", productStatus.value.toString())
                 }
             }
@@ -60,22 +63,14 @@ class ItemEnrollViewModel : ViewModel() {
     }
 
     fun productRegister() {
-        val preferenceManager = PreferenceManager()
-  //      val userId = preferenceManager.getId(,"userId")
 
-        Log.e("Fads",ProductRequest(ProductBasicInfoRequest.FileInfoRequest(arrayListOf(null)),
-            ProductBasicInfoRequest(
-                productName.value.toString(),"0000",productStatus.value.toString(),
-                productDescription.value.toString(),productPrice.value!!.toInt()
-            )).toString())
-
-        networkService.productEnroll("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0QHQuY29tIiwiaWF0IjoxNjIwODkyNTE2LCJleHAiOjE2ODM5NjQ1MTZ9.TJJP8x50DiIEAIZKONCr53Q8x1DnW6-kzKHNzOzBNaY"
+        networkService.productEnroll(token.value.toString()
             ,ProductRequest(ProductBasicInfoRequest.FileInfoRequest(arrayListOf(null)),
             ProductBasicInfoRequest(
                 productName.value.toString(),"0000",productStatus.value.toString(),
                 productDescription.value.toString(),productPrice.value!!.toInt()
             )
-        ),1).enqueue(object : Callback<JsonObject>{
+        ),userId.value!!.toInt()).enqueue(object : Callback<JsonObject>{
 
             override fun onFailure(call: Call<JsonObject>, t: Throwable) {
 
