@@ -1,113 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".home.myInfo.MyInfoFragment"
-    android:orientation="vertical">
+<layout>
+
+    <data>
+
+        <variable
+            name="myInfoViewModel"
+            type="com.example.garam.jeongoo.home.myInfo.MyInfoViewModel" />
+
+    </data>
 
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        tools:context=".home.myInfo.MyInfoFragment"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_weight="1"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:text="ID"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:textSize="24sp"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:textColor="#FEFEFE"
-            android:backgroundTint="#F39C12"
-            android:text="정보 수정"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:gravity="center"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:src="@drawable/ic_iconmonstr_task_thin"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginEnd="5dp"
-            android:background="#00FEFEFE"/>
+            android:orientation="horizontal">
 
-        <ImageView
-            android:src="@drawable/ic_iconmonstr_shopping_bag_8"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#00FEFEFE"/>
+            <TextView
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:text="ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-        <ImageView
-            android:src="@drawable/ic_iconmonstr_favorite_3"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="20dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#00FEFEFE"/>
+            <TextView
+                android:textSize="24sp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:textColor="#FEFEFE"
+                android:backgroundTint="#F39C12"
+                android:text="정보 수정"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/saleList"
+                android:onClick="@{()-> myInfoViewModel.setSaleListOnclick(saleList,myInfoViewModel.userId)}"
+                android:src="@drawable/ic_iconmonstr_task_thin"
+                android:layout_marginStart="20dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="5dp"
+                android:background="#00FEFEFE"/>
+
+            <ImageView
+                android:id="@+id/purchasedList"
+                android:onClick="@{() -> myInfoViewModel.setPurchasedListOnclick(purchasedList,myInfoViewModel.userId)}"
+                android:src="@drawable/ic_iconmonstr_shopping_bag_8"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="#00FEFEFE"/>
+
+            <ImageView
+                android:src="@drawable/ic_iconmonstr_favorite_3"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="#00FEFEFE"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="판매목록"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="구매목록"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="관심목록"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
 
     </LinearLayout>
+</layout>
 
-    <LinearLayout
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="판매목록"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="구매목록"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:text="관심목록"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-
-</LinearLayout>

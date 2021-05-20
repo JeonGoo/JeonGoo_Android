@@ -1,14 +1,17 @@
 package com.example.garam.jeongoo.util
 
+import android.content.Intent
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.garam.jeongoo.home.myInfo.PurchasedListActivity
 import com.example.garam.jeongoo.R
 import com.example.garam.jeongoo.RecyclerAdapter
 import com.example.garam.jeongoo.data.ProductDetailDto
+import com.example.garam.jeongoo.home.myInfo.SaleListActivity
 
 object DataBindingUtils {
 
@@ -23,6 +26,20 @@ object DataBindingUtils {
         }
         (recyclerView.adapter as RecyclerAdapter).items = items
         recyclerView.adapter?.notifyDataSetChanged()
+    }
+
+    @BindingAdapter("saleList")
+    @JvmStatic
+    fun saleList(imageView: ImageView, userId: Int) {
+        val nextIntent = Intent(imageView.context,SaleListActivity::class.java)
+        imageView.context.startActivity(nextIntent)
+    }
+
+    @BindingAdapter("purchasedList")
+    @JvmStatic
+    fun purchasedList(imageView: ImageView, userId: Int){
+        val nextIntent = Intent(imageView.context, PurchasedListActivity::class.java)
+        imageView.context.startActivity(nextIntent)
     }
 
     @BindingAdapter("loadAlbumImage")
