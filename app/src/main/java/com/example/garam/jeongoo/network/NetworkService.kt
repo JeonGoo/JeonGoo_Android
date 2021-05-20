@@ -83,4 +83,6 @@ interface NetworkService {
     fun findInterestProduct(
         @Path("interestedUserId") userId: Int
     ) : Call<JsonObject>
+
+
 }

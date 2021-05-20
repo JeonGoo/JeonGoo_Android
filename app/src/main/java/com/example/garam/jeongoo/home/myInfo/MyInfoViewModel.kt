@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.garam.jeongoo.data.ResponseProductsData
 import com.example.garam.jeongoo.network.NetworkController
 import com.example.garam.jeongoo.network.NetworkService
+import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,6 +41,19 @@ class MyInfoViewModel : ViewModel() {
                 call: Call<ResponseProductsData>,
                 response: Response<ResponseProductsData>
             ) {
+
+            }
+        })
+    }
+
+    fun getInterestedList(interestedUserId: Int) {
+        networkService.findInterestProduct(interestedUserId).enqueue(object : Callback<JsonObject>{
+
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
 
             }
         })
