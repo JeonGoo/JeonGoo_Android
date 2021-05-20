@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import com.example.garam.jeongoo.PreferenceManager
 import com.example.garam.jeongoo.R
 import com.example.garam.jeongoo.databinding.ActivityProductInfoBinding
 
@@ -26,6 +27,10 @@ class ProductInfoActivity : AppCompatActivity() {
         val id = intent.getIntExtra("productId",0)
         mainFragmentViewModel.getDetailProductInfo(id)
         mainFragmentViewModel.productId.value = id
+
+        val preferenceManager = PreferenceManager()
+        mainFragmentViewModel.userId.value = preferenceManager.getId(this,"userId")
+        mainFragmentViewModel.token.value = preferenceManager.getToken(this,"token")
 
         val viewPager = findViewById<ViewPager2>(R.id.productImageViewPager)
         val fragmentAdapter = ImageFragmentAdapter(this)

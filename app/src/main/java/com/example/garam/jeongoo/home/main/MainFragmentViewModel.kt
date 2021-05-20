@@ -94,8 +94,9 @@ class MainFragmentViewModel : ViewModel() {
         })
     }
 
-    fun purchaseProduct(userId: Int, productId: Int) {
-        networkService.purchase(productId,userId).enqueue(object : Callback<JsonObject>{
+    fun purchaseProduct() {
+        Log.e("fad","userId : ${userId.value} productId : ${productId.value}")
+        networkService.purchase(productId.value!!.toInt(),userId.value!!.toInt()).enqueue(object : Callback<JsonObject>{
             override fun onFailure(call: Call<JsonObject>, t: Throwable) {
 
             }
