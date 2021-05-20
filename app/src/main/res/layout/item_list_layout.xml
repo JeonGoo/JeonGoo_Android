@@ -58,12 +58,27 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
-            <TextView
-                android:textSize="18sp"
-                android:id="@+id/productPriceTextView"
-                android:text="@{String.valueOf(itemInfo.price)}"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:id="@+id/productPriceTextView"
+                    android:text="@{String.valueOf(itemInfo.price)}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <ImageButton
+                    android:background="#00FEFEFE"
+                    android:src="@drawable/ic_iconmonstr_favorite_3"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
