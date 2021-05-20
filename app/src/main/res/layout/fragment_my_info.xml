@@ -77,6 +77,8 @@
                 android:background="#00FEFEFE"/>
 
             <ImageView
+                android:id="@+id/interestedList"
+                android:onClick="@{()-> myInfoViewModel.setInterestedListOnclick(interestedList,myInfoViewModel.userId)}"
                 android:src="@drawable/ic_iconmonstr_favorite_3"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="20dp"

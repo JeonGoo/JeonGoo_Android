@@ -32,6 +32,9 @@ class MyInfoViewModel : ViewModel() {
     fun setPurchasedListOnclick(imageView: ImageView, userId: Int) {
         DataBindingUtils.purchasedList(imageView,userId)
     }
+    fun setInterestedListOnclick(imageView: ImageView, userId: Int) {
+        DataBindingUtils.interestedList(imageView,userId)
+    }
 
     fun getSellList(userId: Int){
         networkService.sellProducts(userId).enqueue(object : Callback<ResponseProductsData>{

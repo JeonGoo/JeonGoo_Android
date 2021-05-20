@@ -11,6 +11,7 @@ import com.example.garam.jeongoo.home.myInfo.PurchasedListActivity
 import com.example.garam.jeongoo.R
 import com.example.garam.jeongoo.RecyclerAdapter
 import com.example.garam.jeongoo.data.ProductDetailDto
+import com.example.garam.jeongoo.home.myInfo.InterestedActivity
 import com.example.garam.jeongoo.home.myInfo.SaleListActivity
 
 object DataBindingUtils {
@@ -39,6 +40,13 @@ object DataBindingUtils {
     @JvmStatic
     fun purchasedList(imageView: ImageView, userId: Int){
         val nextIntent = Intent(imageView.context, PurchasedListActivity::class.java)
+        imageView.context.startActivity(nextIntent)
+    }
+
+    @BindingAdapter("ㅑinterestedList")
+    @JvmStatic
+    fun interestedList(imageView: ImageView, userId: Int){
+        val nextIntent = Intent(imageView.context, InterestedActivity::class.java)
         imageView.context.startActivity(nextIntent)
     }
 
