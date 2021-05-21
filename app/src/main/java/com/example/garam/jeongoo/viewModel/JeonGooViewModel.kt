@@ -98,9 +98,11 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
     }
 
     private fun signUp(signUp : SignUpInfoData) {
+        val errorMessage = Toast.makeText(context,"회원 가입에 실패했습니다",Toast.LENGTH_SHORT)
+
         networkService.signUp(signUp).enqueue(object : Callback<JsonObject>{
             override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-
+                errorMessage.show()
             }
 
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
@@ -108,6 +110,9 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
                     Toast.makeText(context,"회원 가입에 성공했습니다",Toast.LENGTH_SHORT).show()
             //        (context as Activity).finish()
 
+                }
+                else {
+                    errorMessage.show()
                 }
             }
 
