@@ -20,6 +20,7 @@
             android:orientation="vertical">
 
             <ImageView
+                loadPreviewImage="@{itemInfo.fileList.get(0).asJsonObject.get(`filePath`).asString}"
                 android:id="@+id/productImageView"
                 android:layout_width="100dp"
                 android:layout_height="100dp"/>

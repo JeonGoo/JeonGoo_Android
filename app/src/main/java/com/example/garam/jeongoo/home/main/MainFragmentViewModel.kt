@@ -1,6 +1,7 @@
 package com.example.garam.jeongoo.home.main
 
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +14,7 @@ import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.coroutines.coroutineContext
 
 class MainFragmentViewModel : ViewModel() {
 
@@ -40,8 +42,8 @@ class MainFragmentViewModel : ViewModel() {
             ) {
                 val res = response.body()!!
 
-                repeat(res.data.size()) {
-                    val productDetail = res.data[it].asJsonObject["productDetailDto"]
+                repeat(res.data.size()-5) {
+                    val productDetail = res.data[it+5].asJsonObject["productDetailDto"]
 
                     productItem.add(ProductDetailDto(
                         productDetail.asJsonObject["certificationFailedReason"]?.toString(),
@@ -49,6 +51,7 @@ class MainFragmentViewModel : ViewModel() {
                         productDetail.asJsonObject["description"].asString,
                         productDetail.asJsonObject["fileList"].asJsonArray,
                         productDetail.asJsonObject["id"].asInt,
+                        productDetail.asJsonObject["hitCount"].asInt,
                         productDetail.asJsonObject["name"].asString,
                         productDetail.asJsonObject["price"].asInt,
                         productDetail.asJsonObject["productGrade"].asString,
@@ -82,6 +85,7 @@ class MainFragmentViewModel : ViewModel() {
                     productDetail.asJsonObject["description"].asString,
                     productDetail.asJsonObject["fileList"].asJsonArray,
                     productDetail.asJsonObject["id"].asInt,
+                    productDetail.asJsonObject["hitCount"].asInt,
                     productDetail.asJsonObject["name"].asString,
                     productDetail.asJsonObject["price"].asInt,
                     productDetail.asJsonObject["productGrade"].asString,
@@ -102,7 +106,6 @@ class MainFragmentViewModel : ViewModel() {
             }
 
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-
             }
         })
     }
