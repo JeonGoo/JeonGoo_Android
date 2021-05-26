@@ -42,8 +42,8 @@ class MainFragmentViewModel : ViewModel() {
             ) {
                 val res = response.body()!!
 
-                repeat(res.data.size()-5) {
-                    val productDetail = res.data[it+5].asJsonObject["productDetailDto"]
+                repeat(res.data.size()) {
+                    val productDetail = res.data[it].asJsonObject["productDetailDto"]
 
                     productItem.add(ProductDetailDto(
                         productDetail.asJsonObject["certificationFailedReason"]?.toString(),

@@ -2,8 +2,11 @@ package com.example.garam.jeongoo.network
 
 import com.example.garam.jeongoo.data.*
 import com.google.gson.JsonObject
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
+import java.io.File
 
 interface NetworkService {
 
@@ -29,11 +32,17 @@ interface NetworkService {
         @Path("userId") userId : Int
     ) : Call<JsonObject>
 
+    @Multipart
     @POST("/api/v1/products/users/{userId}")
-    fun productEnroll(
-        @Header("Authorization") token : String,
-        @Body productInfoData: ProductRequest,
-        @Path ("userId") userId: Int
+    fun productRegister(
+        @Part imageFiles : MultipartBody.Part?,
+        @Part videoFile : MultipartBody.Part?,
+        @Path ("userId") userId: Int,
+        @Part description : MultipartBody.Part,
+        @Part name : MultipartBody.Part,
+        @Part price : MultipartBody.Part,
+        @Part serialNumber : MultipartBody.Part,
+        @Part useStatus : MultipartBody.Part
     ) : Call<JsonObject>
 
     @DELETE("/api/v1/products/{productId}")
@@ -55,23 +64,23 @@ interface NetworkService {
         @Path("productId") id : Int
     ) : Call<ResponseProductDetailData>
 
-    @GET("/api/v1/products/users/{userId}")
-    fun salesList(
-        @Path("userId") id : Int
-    ) : Call<ResponseProductsData>
-
-    @GET("api/v1/purchased/products")
+    @GET("/api/v1/purchased/products")
     fun allPurchasedProducts() : Call<ResponseProductsData>
 
-    @GET("api/v1/purchased/products/users/{userId}/purchased")
+    @GET("/api/v1/purchased/products/users/{userId}/purchased")
     fun purchasedProducts(
         @Path ("userId") userId: Int
     ) : Call<ResponseProductsData>
 
-    @GET("api/v1/purchased/products/users/{userId}/sell")
+    @GET("/api/v1/purchased/products/users/{userId}/sell")
     fun sellProducts(
         @Path ("userId") userId: Int
     ) : Call<ResponseProductsData>
+
+    @GET("/api/v1/products/users/{userId}")
+    fun userEnrollProduct(
+        @Path ("userId") userId : Int
+    )  : Call<ResponseProductsData>
 
     @POST("api/v1/interest/products/{productId}/users/{usersId}")
     fun registerInterestProduct(

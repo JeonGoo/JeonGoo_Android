@@ -36,8 +36,8 @@ class MyInfoViewModel : ViewModel() {
         DataBindingUtils.interestedList(imageView,userId)
     }
 
-    fun getSellList(userId: Int){
-        networkService.sellProducts(userId).enqueue(object : Callback<ResponseProductsData>{
+    fun getSellList(){
+        networkService.userEnrollProduct(userId.value!!.toInt()).enqueue(object : Callback<ResponseProductsData>{
             override fun onFailure(call: Call<ResponseProductsData>, t: Throwable) {
 
             }
@@ -46,7 +46,26 @@ class MyInfoViewModel : ViewModel() {
                 call: Call<ResponseProductsData>,
                 response: Response<ResponseProductsData>
             ) {
+                val res = response.body()!!
 
+                repeat(res.data.size()) {
+                    val productDetail = res.data[it].asJsonObject["productDetailDto"]
+
+                    productItem.add(ProductDetailDto(
+                        productDetail.asJsonObject["certificationFailedReason"]?.toString(),
+                        productDetail.asJsonObject["certificationStatus"]?.asString,
+                        productDetail.asJsonObject["description"].asString,
+                        productDetail.asJsonObject["fileList"].asJsonArray,
+                        productDetail.asJsonObject["id"].asInt,
+                        productDetail.asJsonObject["hitCount"].asInt,
+                        productDetail.asJsonObject["name"].asString,
+                        productDetail.asJsonObject["price"].asInt,
+                        productDetail.asJsonObject["productGrade"].asString,
+                        productDetail.asJsonObject["useStatus"].asString,
+                        productDetail.asJsonObject["salesStatus"].asString,
+                        ProductDetailDto.UserShowResponse(res.data[it].asJsonObject["userShowResponse"].asJsonObject["name"].asString,
+                            res.data[it].asJsonObject["userShowResponse"].asJsonObject["phoneNumber"].asString)))
+                }
             }
         })
     }

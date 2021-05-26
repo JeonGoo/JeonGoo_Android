@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -69,6 +70,8 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
 
                     val id = data["id"].asInt
                     val token = data["token"].asString
+
+                    Log.e("token",token)
 
                     preferenceManager.setToken(context,"token",token)
                     preferenceManager.setId(context,"userId",id)
