@@ -60,7 +60,7 @@ class ItemEnrollViewModel : ViewModel() {
 
     fun productRegister() {
         val requestFile = RequestBody.create(MediaType.parse("image/*"), fileList.value!!.absoluteFile)
-        val body = MultipartBody.Part.createFormData("imageFiles",fileList.value!!.name,requestFile)
+        val body = MultipartBody.Part.createFormData("imageFiles","${productName.value}-${System.currentTimeMillis()}",requestFile)
 
         val status = MultipartBody.Part.createFormData("useStatus",productStatus.value.toString())
         val description = MultipartBody.Part.createFormData("description",productDescription.value.toString())
@@ -69,7 +69,7 @@ class ItemEnrollViewModel : ViewModel() {
         val serial = MultipartBody.Part.createFormData("serialNumber","0000")
 
         val requestVideo = RequestBody.create(MediaType.parse("video/*"),fileList.value!!.absoluteFile)
-        val testVideo = MultipartBody.Part.createFormData("videoFile",fileList.value!!.name,requestVideo)
+        val testVideo = MultipartBody.Part.createFormData("videoFile","${productName.value}-${System.currentTimeMillis()}",requestVideo)
 
         networkService.productRegister(body , testVideo,
         userId.value!!.toInt(),description,name,

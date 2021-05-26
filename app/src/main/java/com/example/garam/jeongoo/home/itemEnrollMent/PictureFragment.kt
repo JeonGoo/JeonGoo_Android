@@ -88,7 +88,7 @@ class PictureFragment : Fragment() {
                     val image = binding.productImageCapture
                     val file = File(requireContext().cacheDir.toString() + "/test.jpg")
 
-                    Glide.with(this).load(file).into(image)
+                    Glide.with(this).load(bitmap).into(image)
 
                     itemEnrollViewModel.fileList.value = file
 
