@@ -43,16 +43,16 @@ object DataBindingUtils {
         imageView.context.startActivity(nextIntent)
     }
 
-    @BindingAdapter("ㅑinterestedList")
+    @BindingAdapter("interestedList")
     @JvmStatic
     fun interestedList(imageView: ImageView, userId: Int){
         val nextIntent = Intent(imageView.context, InterestedActivity::class.java)
         imageView.context.startActivity(nextIntent)
     }
 
-    @BindingAdapter("loadAlbumImage")
+    @BindingAdapter("loadPreviewImage")
     @JvmStatic
-    fun setAlbumImage(imageView: ImageView, url: String?){
+    fun setPreviewImage(imageView: ImageView, url: String?){
         Glide.with(imageView.context).load(url).centerInside().error(R.drawable.ic_launcher_foreground).into(imageView)
     }
 }
