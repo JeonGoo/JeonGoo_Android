@@ -82,16 +82,20 @@ interface NetworkService {
         @Path ("userId") userId : Int
     )  : Call<ResponseProductsData>
 
-    @POST("api/v1/interest/products/{productId}/users/{usersId}")
+    @POST("/api/v1/interest/products/{productId}/users/{userId}")
     fun registerInterestProduct(
         @Path("productId") productId: Int,
         @Path("userId") userId: Int
     ): Call<JsonObject>
 
-    @GET("api/v1/interest/products/users/{interestedUserId}")
+    @GET("/api/v1/interest/products/users/{interestedUserId}")
     fun findInterestProduct(
         @Path("interestedUserId") userId: Int
     ) : Call<ResponseProductsData>
 
-
+    @DELETE("/api/v1/interest/products/registered/products/{productId}/users/{interestedUserId}")
+    fun deleteInterest(
+        @Path ("productId") productId: Int,
+        @Path ("interestedUserId") userId : Int
+    ) : Call<JsonObject>
 }
