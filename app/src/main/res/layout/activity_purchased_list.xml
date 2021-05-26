@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
     <data>
         <variable
-            name="purchaseViewModel"
+            name="viewModel"
             type="com.example.garam.jeongoo.home.myInfo.MyInfoViewModel" />
 
     </data>
@@ -21,7 +20,7 @@
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                itemList="@{purchaseViewModel.productItem}"
+                itemList="@{viewModel.productItem}"
                 android:id="@+id/purchasedRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

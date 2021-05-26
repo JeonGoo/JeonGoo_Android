@@ -7,11 +7,11 @@ import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.garam.jeongoo.home.myInfo.PurchasedListActivity
 import com.example.garam.jeongoo.R
 import com.example.garam.jeongoo.RecyclerAdapter
 import com.example.garam.jeongoo.data.ProductDetailDto
 import com.example.garam.jeongoo.home.myInfo.InterestedActivity
+import com.example.garam.jeongoo.home.myInfo.PurchasedListActivity
 import com.example.garam.jeongoo.home.myInfo.SaleListActivity
 
 object DataBindingUtils {

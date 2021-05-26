@@ -3,7 +3,7 @@
 
     <data>
         <variable
-            name="interestedViewModel"
+            name="viewModel"
             type="com.example.garam.jeongoo.home.myInfo.MyInfoViewModel" />
 
     </data>
@@ -21,7 +21,7 @@
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/interestedRecyclerView"
+                itemList="@{viewModel.productItem}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
