@@ -4,6 +4,7 @@ import android.content.Intent
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -76,8 +77,6 @@ object DataBindingUtils {
         val preferenceManager = PreferenceManager()
         val userId = preferenceManager.getId(imageButton.context,"userId")
 
-        Log.e("fda",userId.toString())
-
         imageButton.setOnClickListener {
             if(!imageButton.isSelected) {
                 imageButton.isSelected = true
@@ -88,7 +87,7 @@ object DataBindingUtils {
                     }
 
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-
+                        Toast.makeText(imageButton.context,"관심 상품으로 등록되었습니다.",Toast.LENGTH_SHORT).show()
                     }
                 })
             }
@@ -100,7 +99,7 @@ object DataBindingUtils {
                     }
 
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-
+                        Toast.makeText(imageButton.context,"관심 상품에서 제거되었습니다.",Toast.LENGTH_SHORT).show()
                     }
                 })
             }
