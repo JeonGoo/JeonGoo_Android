@@ -1,8 +1,6 @@
 package com.example.garam.jeongoo.viewModel
 
-import android.app.Activity
 import android.app.Application
-import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
@@ -57,7 +55,6 @@ class JeonGooViewModel(application: Application) : AndroidViewModel(application)
     private fun signIn(signIn : SignInData) {
         networkService.signIn(signIn).enqueue(object : Callback<JsonObject>{
             override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-
             }
 
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
