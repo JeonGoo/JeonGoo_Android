@@ -27,10 +27,12 @@ class MainFragmentViewModel : ViewModel() {
     val productId = MutableLiveData<Int>()
     val token = MutableLiveData<String>()
     val userId = MutableLiveData<Int>()
+    val imageList = MutableLiveData<ArrayList<String>>()
+
 
     fun getProducts() {
         productItem.clear()
-        networkService.findAllProduct().enqueue(object : Callback<ResponseProductsData>{
+        networkService.findAllProduct(null,null,null).enqueue(object : Callback<ResponseProductsData>{
 
             override fun onFailure(call: Call<ResponseProductsData>, t: Throwable) {
 
@@ -94,6 +96,14 @@ class MainFragmentViewModel : ViewModel() {
                     ProductDetailDto.UserShowResponse(res.data.asJsonObject["userShowResponse"].asJsonObject["name"].asString,
                         res.data.asJsonObject["userShowResponse"].asJsonObject["phoneNumber"].asString)
                 )
+
+                val tempArray = ArrayList<String>()
+                repeat(productDetail.asJsonObject["fileList"].asJsonArray.size()) {
+                    tempArray.add(productDetail.asJsonObject["fileList"].asJsonArray[it].asJsonObject["filePath"].asString)
+   //                 imageList.value?.plusAssign(arrayListOf(productDetail.asJsonObject["fileList"].asJsonArray[it].asJsonObject["filePath"].asString))
+                }
+                Log.e("fdas",tempArray.toString())
+                imageList.value = tempArray
             }
         })
     }

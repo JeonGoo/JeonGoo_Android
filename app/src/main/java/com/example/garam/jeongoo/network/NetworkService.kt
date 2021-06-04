@@ -57,7 +57,11 @@ interface NetworkService {
     ) : Call<JsonObject>
 
     @GET("/api/v1/products")
-    fun findAllProduct() : Call<ResponseProductsData>
+    fun findAllProduct(
+        @Query("page") page : Int?,
+        @Query("size") size : Int?,
+        @Query("sort") sort : ArrayList<String>?
+    ) : Call<ResponseProductsData>
 
     @GET("/api/v1/products/{productId}")
     fun findProduct(
